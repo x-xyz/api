@@ -1,0 +1,35 @@
+# other IDE
+.idea
+
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# Dependency directories (remove the comment below to include it)
+
+vendor/
+_*
+*.test
+.DS_Store
+/api
+/tracker
+bin/
+
+# kustomize
+debug
+tmp
+
+# local dev config
+local-config.yaml
+
+# swagger
+app/api/docs

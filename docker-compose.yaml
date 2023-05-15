@@ -1,0 +1,35 @@
+version: "3"
+services:
+  goapi:
+    build:
+      context: .
+      dockerfile: $PWD/infra/docker/Dockerfile.goapi
+    container_name: xyz-goapi
+    ports:
+      - 9090:9090
+    depends_on:
+      - mongo
+      - redis
+    volumes:
+      - ./infra/configs/local-docker-config.yaml:/app/infra/configs/config.yaml
+  mongo:
+    image: mongo:4.4.10
+    container_name: xyz-mongo
+    restart: always
+    ports:
+      - 28000:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: xxyz
+      MONGO_INITDB_ROOT_PASSWORD: xxyz
+  ipfs:
+    image: ipfs/go-ipfs:v0.10.0
+    container_name: xyz-ipfs
+    restart: always
+    ports:
+      - 5001:5001
+  redis:
+    image: redis:6.2.6
+    container_name: xyz-redis
+    restart: always
+    ports:
+      - 6379:6379
